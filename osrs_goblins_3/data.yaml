@@ -1,5 +1,0 @@
-train: /root/Notebooks/computer_viz/MYBOT/osrs_goblins_3/train/images
-val: /root/Notebooks/computer_viz/MYBOT/osrs_goblins_3/valid/images
-
-nc: 3
-names: ['Goblin', 'Player', 'goblin']
