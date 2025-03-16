@@ -1,0 +1,77 @@
+# 🧌 RuneLite Goblin Bot
+
+This is a **computer vision bot** that detects and attacks goblins in RuneLite using **YOLOv11n** and **Win32 screen capture**.  
+The bot tracks goblins in real time, allowing you to manually attack by pressing **'E'**.
+
+## **⚡ Features**
+✅ **Real-time goblin tracking** using YOLO  
+✅ **Press 'E' to attack**, 'Q' to quit  
+✅ **Does NOT require the game window to be active**  
+✅ **Works without GPU acceleration (CPU-only)**  
+
+---
+
+## **🚀 Setup & Installation**
+
+### **1️⃣ Install Dependencies**
+Make sure you have Python installed, then run:
+```bash
+pip install -r requirements.txt
+
+
+### 2️⃣ Run the Bot
+
+python main.py
+
+### 3️⃣ How to Control the Bot
+
+E	Attack the nearest goblin
+Q	Quit the bot
+
+
+📂 Script Overview
+📄 File	🔹 Purpose
+
+main.py	            Starts the bot and loads YOLO
+tracking.py	        Handles goblin detection & movement
+screen_capture.py	Captures RuneLite’s window using Win32
+detection.py	    Runs YOLO detection on captured frames
+requirements.txt	Lists dependencies for installation
+
+📌 Script Details
+
+🟢 main.py (Entry Point)
+- Loads YOLOv11n model (best.pt)
+- Calls delayed_bot_and_tracking(model) from tracking.py
+- Run this file to start the bot
+
+🟡 tracking.py (Goblin Tracking & Clicking)
+- Captures the RuneLite window
+- Runs YOLO detection to find goblins
+- Waits for you to press 'E' to attack
+- Shows a live tracking window (OpenCV)
+
+🔵 screen_capture.py (Capturing RuneLite’s Window)
+- Uses Win32 API to capture RuneLite
+- Returns a screenshot as an image for YOLO
+
+🔴 detection.py (YOLO Object Detection)
+- Loads YOLOv11n model (best.pt)
+- Detects goblins and returns bounding boxes
+- Filters goblins with confidence > 20%
+
+⚠️ Notes
+- Make sure RuneLite is running before starting the bot
+- Check your YOLO model path in main.py
+- If detection doesn’t work, check if class ID is correct in detection.py
+
+
+👾 Troubleshooting
+❌ Error: RuneLite window not found
+✅ Solution: Make sure the game is open and window name is correct in tracking.py
+
+❌ Bot not clicking?
+✅ Solution: Ensure 'E' is pressed and game coordinates are correct
+
+❌ Bounding boxes look weird?
+✅ Solution: Check screen_capture.py uses cv2.COLOR_BGRA2BGR
