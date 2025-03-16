@@ -8,7 +8,7 @@ from screen_capture import capture_runeLite_window
 from detection import detect_goblins
 
 # **RuneLite Window Title**
-window_name = "RuneLite - SavignonRed"
+window_name = "RuneLite - <username>"
 
 def delayed_bot_and_tracking(model):
     """Tracks goblins but only clicks when 'E' is pressed."""
